@@ -39,8 +39,8 @@ jobs:
 
     - name: Update kubeconfig
       run: |
-        aws eks update-kubeconfig --region  --name dev-eks
-
+        aws eks update-kubeconfig --region us-west-2 --name dev-eks
+        
     - name: Deploy Flask App
       run: |
         cd /k8s

@@ -81,6 +81,9 @@ jobs:
            --set region=us-west-2 \
            --set vpcId=vpc-01e122b5d6e1ff11d
 
+         kubectl get pods -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
+         kubectl get endpoints -n kube-system aws-load-balancer-webhook-service
+
     - name: Install Prometheus and Grafana
       run: |
         helm repo add prometheus-community https://prometheus-community.github.io/helm-charts

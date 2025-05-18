@@ -37,9 +37,14 @@ jobs:
     - name: Setup Helm
       uses: azure/setup-helm@v3
 
-    - name: Update kubeconfig
+  
+    - name: Verify kubeconfig
       run: |
-        aws eks update-kubeconfig --region us-west-2 --name dev-eks
+       aws eks update-kubeconfig --region us-west-2 --name dev-eks
+       kubectl config view
+       kubectl get nodes
+
+
         
     - name: Deploy Flask App
       run: |

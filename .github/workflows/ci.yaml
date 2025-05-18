@@ -41,21 +41,21 @@ jobs:
       run: |
         aws eks update-kubeconfig --region us-west-2 --name dev-eks
 
-    - name: Patch aws-auth ConfigMap
-      run: |
-        cat <<EOF | kubectl apply -f -
-        apiVersion: v1
-        kind: ConfigMap
-        metadata:
-          name: aws-auth
-          namespace: kube-system
-        data:
-          mapUsers: |
-            - userarn: arn:aws:iam::144317819575:user/lavanya
-              username: lavanya
-              groups:
-                - system:masters
-        EOF
+    # - name: Patch aws-auth ConfigMap
+    #   run: |
+    #     cat <<EOF | kubectl apply -f -
+    #     apiVersion: v1
+    #     kind: ConfigMap
+    #     metadata:
+    #       name: aws-auth
+    #       namespace: kube-system
+    #     data:
+    #       mapUsers: |
+    #         - userarn: arn:aws:iam::144317819575:user/lavanya
+    #           username: lavanya
+    #           groups:
+    #             - system:masters
+    #     EOF
 
     - name: Verify Cluster Access
       run: |
